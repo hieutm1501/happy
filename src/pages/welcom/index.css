@@ -1,246 +1,103 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #00bbf9;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.birthdayCard {
+.card {
     position: relative;
-    width: 250px;
-    height: 350px;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transform: perspective(2500px);
-    transition: 4s;
+    width: 300px;
+    height: 425px;
+    border: 10px solid #9612eb;
+    margin: 60px auto 0 auto;
+    box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255), rgba(255, 255, 255, 0.5)), url("https://images.unsplash.com/photo-1527481138388-31827a7c94d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    background-color: #e6f0e6;
 }
 
-.birthdayCard:hover {
-    transform: perspective(2500px) rotate(5deg);
-    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .15), 0 10px 100px rgba(0, 0, 0, 0.3);
+.card .text-container {
+    width: 80%;
+    height: 80%;
+    margin: auto;
 }
 
-.birthdayCard:hover .cardFront {
-    transform: rotateY(-160deg);
+.strikethrough {
+    text-decoration: line-through;
 }
 
-.birthdayCard:hover .front-text {
-    display: none;
+.card .text-container #head {
+    font-family: 'Nobile', sans-serif;
+    font-size: 1.5em;
+    margin: 60px auto 60px auto;
 }
 
-.birthdayCard:hover .wrap-deco {
-    display: none;
-}
-
-.birthdayCard:hover .wrap-decoTwo {
-    display: none;
-}
-
-.birthdayCard:hover .plate {
-    display: none;
-}
-
-.cardFront {
-    position: relative;
-    background-color: #fff;
-    width: 250px;
-    height: 350px;
-    overflow: hidden;
-    transform-origin: left;
-    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1);
-    transition: .4s;
-}
-
-.happy,
-.toyou {
-    position: relative;
-    font-family: didot;
+.card p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    font-family: 'Nobile';
+    color: #331717;
+    font-style: italic;
     text-align: center;
+    margin: 30px auto 0px auto;
+}
+
+.card .front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: -10px 0px 0px -10px;
+    border: 10px solid #9612eb;
     backface-visibility: hidden;
-    font-size: 30px;
+    background-color: #9612eb;
+    /* background-image: url($cover-image);
+   */
+    background-size: contain;
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+    transform: perspective(800px) rotateY(0deg);
+    transition: all 0.8s ease-in-out;
 }
 
-.happy {
-    top: 208px;
+.card:hover .front {
+    transform: perspective(800px) rotateY(-170deg);
+    background-color: #41718d;
 }
 
-.toyou {
-    top: 176px;
+.card:hover .back {
+    transform: perspective(800px) rotateY(-170deg);
+    box-shadow: 7px 0px 5px 0px rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    background-color: #d2dcd2;
 }
 
-.bday {
+.card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 10px solid #9612eb;
+    margin: -10px 0px 0px -10px;
+    backface-visibility: visible;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+    transform: perspective(800px) rotateY(0deg);
+    transition: all 0.8s ease-in-out;
+    background-color: #e6f0e6;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.imgset {
     position: relative;
-    font-family: arial;
-    font-size: 35px;
-    text-align: center;
-    top: 193px;
+    z-index: 1;
+    margin-bottom: -215px;
 }
 
-.wrap-deco {
-    position: absolute;
-    top: -230px;
-    left: -200px;
-}
-
-.decorations {
-    position: absolute;
-    width: 400px;
-    height: 300px;
-    border: 3px solid #333;
-    border-radius: 50%;
-}
-
-.decorations:before,
-.decorations:after,
-.decorationsTwo:before,
-.decorationsTwo:after,
-.decorationsThree:before,
-.decorationsThree:after {
-    content: "";
-    position: absolute;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    width: 0;
-    height: 0;
-}
-
-.decorations:before {
-    border-top: 40px solid #f15bb5;
-    top: 297px;
-    left: 210px;
-    transform: rotate(-5deg);
-}
-
-.decorations:after {
-    border-top: 40px solid #f4d35e;
-    top: 288px;
-    left: 260px;
-    transform: rotate(-17deg);
-}
-
-.decorationsTwo:before {
-    border-top: 40px solid #00f5d4;
-    top: 268px;
-    left: 315px;
-    transform: rotate(-30deg);
-}
-
-.decorationsTwo:after,
-.decorationsThree:after {
-    border-top: 40px solid #9b5de5;
-    top: 238px;
-    left: 355px;
-    transform: rotate(-40deg);
-}
-
-.wrap-decoTwo {
-    transform: scaleX(-1);
-    position: absolute;
-    top: -230px;
-    left: 445px;
-}
-
-.decorationsThree:before {
-    border-top: 40px solid #00bbf9;
-    top: 268px;
-    left: 315px;
-    transform: rotate(-30deg);
-}
-
-.plate {
-    position: absolute;
-    width: 130px;
-    height: 5px;
-    background-color: #00bbf9;
-    left: 60px;
-    top: 213px;
-}
-
-.cake {
-    position: absolute;
-    overflow: hidden;
-    width: 100px;
-    height: 50px;
-    background-color: #f15bb5;
-    border-radius: 10px 10px 0 0;
-    top: -50px;
-    left: 15px;
-    box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
-}
-
-.cake:before {
-    content: "";
-    position: absolute;
-    background-color: #432818;
-    width: 10px;
-    height: 20px;
-    top: 5px;
-    border-radius: 20px;
-    box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
-}
-
-.plate:before {
-    content: "";
-    position: absolute;
-    background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
-    width: 7px;
-    height: 25px;
-    top: -75px;
-    left: 61px;
-}
-
-.plate:after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 5px;
-    background-color: #333;
-    top: -80px;
-    left: 64px;
-}
-
-
-.flame {
-    position: absolute;
-    background-color: #fb5607;
-    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-    transform: rotate(-45deg);
-    width: 15px;
-    height: 15px;
-    opacity: 0.7;
-    top: -93px;
-    left: 57px;
-}
-
-.cardInside {
-    position: absolute;
-    background-color: #fff;
-    width: 250px;
-    height: 350px;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
-}
-
-.inside-text {
-    position: relative;
-    top: -160px;
-    transform: scale(0.7);
-}
-
-.wishes {
-    position: relative;
-    top: -90px;
-    margin: 25px;
-}
-
-p {
-    font-family: 'Brush Script MT', cursive;
-    color: #333;
-}
-
-.name {
-    margin-left: 150px;
+.imgset img {
+    box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
 }
