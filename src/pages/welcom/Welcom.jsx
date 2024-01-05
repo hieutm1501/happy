@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './index.css';
+import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 const Welcome = () => {
@@ -15,10 +16,24 @@ const Welcome = () => {
                     </div>
                 </div>
                 <div class="text-container">
-                    <p id="head">Happy Birthday!</p>
-                    <h5>From Ashish to You</h5>
-                    <p>I hope your special day will bring you lots of happiness, love, and fun. You deserve them a lot. Enjoy!</p>
-                    <p>Hope your day goes great!</p>
+                    <p id="head">Happy Birthday Gấu Trúc!</p>
+                    <p>Chúc Lan Có một ngày sinh nhật thật vui vẻ nha. Chúc Lan tuổi mới ngày càng xinh đẹp hơn, hạnh phúc bên gia đình và những người yêu thương nha 🎉🎉</p>
+                    <p>Truong Minh Hieu</p>
+
+                    <div className='text-center mt-[10px]'>
+                        <div class="inline-flex">
+                            <Link to={`/hello`}>
+                                <button class="bg-[#e6f0e6] hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                                    Prev
+                                </button>
+                            </Link>
+                            <Link to={`/`}>
+                                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
+                                    Next
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
