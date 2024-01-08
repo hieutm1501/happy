@@ -45,18 +45,3 @@
     background-size: contain;
     background-image: url(https://res.cloudinary.com/dwp7umncy/image/upload/v1704451519/profile/IMG_E1677_smhgmi.jpg);
 }
-
-.user-name {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    color: white;
-}
-
-input.user-password {
-    width: 120px;
-    height: 18px;
-    opacity: 0.4;
-    border-radius: 2px;
-    padding: 5px 15px;
-    border: 0;
-}
