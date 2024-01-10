@@ -11,12 +11,13 @@ var Odoo = function (config) {
     this.session_id = config.session_id || null;
     this.context = config.context;
 };
-Odoo.prototype.authenticate = function (cb) {
+
+export const authenticate = async () => {
     var body = JSON.stringify({
         params: {
-            db: this.database,
-            login: this.username,
-            password: this.password,
+            db: 'gerp-zalo-v12',
+            login: 'thanhhai41280@gmail.com',
+            password: '123',
         },
     });
     var requestConfig = {
@@ -24,89 +25,42 @@ Odoo.prototype.authenticate = function (cb) {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            "Content-Length": body.length,
         },
         data: body,
         withCredentials: false,
-        baseURL: this.host,
+        baseURL: 'https://gerp-zalo-v12.phanmemdoanhnghiep.net',
         url: "/web/session/authenticate",
     };
-    axios(requestConfig).then(
-        (response) => {
-            console.log(response);
-            if (response.data.error) {
-                this.context = response.data.result.user_context;
-                cb(response.data.error, null);
-            } else {
-                cb(null, response.data.result);
-            }
-        },
-        (error) => {
-            cb(error, null);
-        }
-    );
+    var result = await axios(requestConfig);
+    console.log(result.data);
+    return result.data.result.session_id;
 };
 
-Odoo.prototype.category_list = function (model, params, callback) {
-    this._request(
-        "/zalo/list_category_product",
-        {
-            model: model,
-            method: "call",
-            args: [],
-            kwargs: {
-                context: this.context,
-                domain: params.domain,
-                offset: params.offset,
-                limit: params.limit,
-                order: params.order,
-                fields: params.fields,
-            },
+
+export const getCategories = async (session_id) => {
+    console.log(session_id);
+    document.cookie = `session_id=${session_id}`;
+    var body = JSON.stringify({
+        params: {
+            // db: 'gerp-zalo-v12',
+            // login: 'thanhhai41280@gmail.com',
+            // password: '123',
         },
-        callback
-    );
-};
-// Call RPC Controller Generic
-Odoo.prototype.rpc_call = function (endpoint, params, callback) {
-    this._request(endpoint, params, callback);
-};
-// Private functions
-Odoo.prototype._request = function (path, params, cb) {
-    params = params || {};
-    var url = this.host + (path || "/") + "";
-    var headers = {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-    };
-    if (this.session_id) {
-        headers["cookie"] = "session_id=" + this.session_id + ";";
-    }
+    });
     var requestConfig = {
         method: "POST",
-        headers: headers,
-        data: JSON.stringify({
-            jsonrpc: "2.0",
-            id: new Date().getUTCMilliseconds(),
-            method: "call",
-            params: params,
-        }),
-        withCredentials: false,
-        baseURL: this.host,
-        url: (path || "/") + "",
-    };
+        headers: {
+            "Content-Type": "application/json",
 
-    axios(requestConfig).then(
-        (response) => {
-            if (response.data.error) {
-                cb(response.data.error, null);
-            } else {
-                cb(null, response.data.result);
-            }
         },
-        (err) => {
-            cb(err, null);
-        }
-    );
+        data: body,
+        withCredentials: false,
+        baseURL: 'https://gerp-zalo-v12.phanmemdoanhnghiep.net',
+        url: "/zalo/list_category_product",
+    };
+    var result = await axios(requestConfig);
+    console.log(result);
 };
+
 
 export default Odoo
