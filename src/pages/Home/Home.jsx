@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
 import { useForm } from 'react-hook-form';
-import { message, Input, Form } from 'antd';
+import { message, Input, Form, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -30,7 +30,12 @@ const Home = () => {
                             name="name"
                             rules={[{ required: true, message: 'Ô sao không nhập!' }]}
                         >
-                            <Input placeholder="Đừng nhập sai nha !" />
+                            <Input placeholder="Eg:'15012003'..." />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button className='bg-blue-500' type="primary" htmlType="submit">
+                                Submit
+                            </Button>
                         </Form.Item>
                     </Form>
                 </div>

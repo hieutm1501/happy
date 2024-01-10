@@ -31,7 +31,12 @@ const EndPage = () => {
                             name="name"
                             rules={[{ required: true, message: 'Ô sao không nhập!' }]}
                         >
-                            <Input placeholder="Đừng nhập sai nha !" />
+                            <Input placeholder="Eg:'15012003'..." />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button className='bg-blue-500' type="primary" htmlType="submit">
+                                Submit
+                            </Button>
                         </Form.Item>
 
                     </Form>
